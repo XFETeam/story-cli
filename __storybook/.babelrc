@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "babel-preset-umi"
+  ],
+  "plugins": [
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "antd-mobile",
+        "style": true
+      },
+      "antd-mobile"
+    ]
+  ]
+}

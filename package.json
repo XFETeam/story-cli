@@ -1,0 +1,59 @@
+{
+  "_from": "file:D:/projects/temp/untitled48/story-cli-1.0.0.tgz",
+  "_id": "story-cli@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-HBf8iIXUyt6dN7KxPiBV1kE3BkVlo9ZvEnuBMzaWq1Mh2h4QUGSZZFQgr+mp8AAVybKL2BfHTxjpGoeBZOsmQw==",
+  "_location": "/story-cli",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "file",
+    "where": "D:\\projects\\temp\\untitled48",
+    "raw": "D:\\projects\\temp\\untitled48\\story-cli-1.0.0.tgz",
+    "rawSpec": "D:\\projects\\temp\\untitled48\\story-cli-1.0.0.tgz",
+    "saveSpec": "file:D:/projects/temp/untitled48/story-cli-1.0.0.tgz",
+    "fetchSpec": "D:/projects/temp/untitled48/story-cli-1.0.0.tgz"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "D:/projects/temp/untitled48/story-cli-1.0.0.tgz",
+  "_shasum": "6f1d0ccac606223f8354418063a6f92a6401bfb5",
+  "_spec": "D:\\projects\\temp\\untitled48\\story-cli-1.0.0.tgz",
+  "_where": "D:\\projects\\temp\\untitled48",
+  "bin": {
+    "story-cli": "./bin/index.js"
+  },
+  "dependencies": {
+    "@babel/core": "7.6.4",
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.22",
+    "@storybook/addon-actions": "5.0.11",
+    "@storybook/addon-links": "5.0.11",
+    "@storybook/addons": "5.0.11",
+    "@storybook/react": "5.0.11",
+    "@xfe-team/babel-preset-xfe": "0.0.4",
+    "babel-loader": "8.0.6",
+    "babel-plugin-import": "1.12.2",
+    "babel-preset-umi": "^1.8.1",
+    "emotion-theming": "^10.0.19",
+    "less": "3.10.3",
+    "less-loader": "5.0.0",
+    "storybook-addon-jsx": "7.1.6",
+    "storybook-readme": "5.0.8"
+  },
+  "deprecated": false,
+  "description": "story cli",
+  "devDependencies": {
+    "antd-mobile": "2.1.8",
+    "react": "16.9.0",
+    "react-dom": "16.11.0"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "story-cli",
+  "scripts": {
+    "build-storybook": "build-storybook",
+    "storybook": "story-cli s -c D:\\Project\\story\\__storybook"
+  },
+  "version": "1.0.0"
+}
