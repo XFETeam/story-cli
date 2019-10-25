@@ -1,28 +1,23 @@
 {
-  "_from": "file:D:/projects/temp/untitled48/story-cli-1.0.0.tgz",
-  "_id": "story-cli@1.0.0",
-  "_inBundle": false,
-  "_integrity": "sha512-HBf8iIXUyt6dN7KxPiBV1kE3BkVlo9ZvEnuBMzaWq1Mh2h4QUGSZZFQgr+mp8AAVybKL2BfHTxjpGoeBZOsmQw==",
-  "_location": "/story-cli",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "file",
-    "where": "D:\\projects\\temp\\untitled48",
-    "raw": "D:\\projects\\temp\\untitled48\\story-cli-1.0.0.tgz",
-    "rawSpec": "D:\\projects\\temp\\untitled48\\story-cli-1.0.0.tgz",
-    "saveSpec": "file:D:/projects/temp/untitled48/story-cli-1.0.0.tgz",
-    "fetchSpec": "D:/projects/temp/untitled48/story-cli-1.0.0.tgz"
+  "name": "@xfe-team/story-cli",
+  "version": "0.0.1",
+  "description": "stroybook cli",
+  "author": "xfe-team",
+  "license": "MIT",
+  "scripts": {
+    "build-storybook": "build-storybook",
+    "storybook": "story-cli s",
+    "release": "release-it 0.0.1"
   },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "D:/projects/temp/untitled48/story-cli-1.0.0.tgz",
-  "_shasum": "6f1d0ccac606223f8354418063a6f92a6401bfb5",
-  "_spec": "D:\\projects\\temp\\untitled48\\story-cli-1.0.0.tgz",
-  "_where": "D:\\projects\\temp\\untitled48",
+  "git": "https://github.com/XFETeam/story-cli.git",
+  "homepage": "https://github.com/XFETeam/story-cli.git",
   "bin": {
     "story-cli": "./bin/index.js"
   },
+  "files": [
+    ".storybook",
+    "bin"
+  ],
   "dependencies": {
     "@babel/core": "7.6.4",
     "@emotion/core": "^10.0.22",
@@ -41,19 +36,10 @@
     "storybook-addon-jsx": "7.1.6",
     "storybook-readme": "5.0.8"
   },
-  "deprecated": false,
-  "description": "story cli",
   "devDependencies": {
     "antd-mobile": "2.1.8",
     "react": "16.9.0",
-    "react-dom": "16.11.0"
-  },
-  "license": "MIT",
-  "main": "index.js",
-  "name": "story-cli",
-  "scripts": {
-    "build-storybook": "build-storybook",
-    "storybook": "story-cli s -c D:\\Project\\story\\__storybook"
-  },
-  "version": "1.0.0"
+    "react-dom": "16.11.0",
+    "release-it": "^12.4.3"
+  }
 }

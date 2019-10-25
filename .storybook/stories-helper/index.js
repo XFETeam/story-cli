@@ -14,7 +14,7 @@ export default function createStory(name, keyValues, README) {
     const story = storiesOf(name, module)
         .addDecorator(addReadme)
         .addDecorator(jsxDecorator)
-        .addDecorator(story => story());
+        .addDecorator(story => <StoryLayout>{story()}</StoryLayout>);
     keyValues.forEach(({key, component}) => {
         story.add(key, () => component, {
             readme: {

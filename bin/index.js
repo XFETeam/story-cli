@@ -1,11 +1,7 @@
 #!/usr/bin/env node
-
 const program = require("commander");
 const path = require('path');
-const { version } = require('../package.json');
-// process.env.SBCONFIG_CONFIG_DIR = path.resolve(__dirname, '../.storybook');
-process.env.ORIGINAL_CWD = process.cwd();
-process.chdir(path.resolve(__dirname, '../'));
+const {version} = require('../package.json');
 
 (() => {
     /**
@@ -18,30 +14,35 @@ process.chdir(path.resolve(__dirname, '../'));
      */
     program
         .option('-p, --port', 'story book')
-        .option('-c, --config-dir <path>', '设置配置文件路径, 默认路径为 webpack.config.js, 对于复杂需求可以用于区分多个不同的环境');
-
+        .option('-w, --watch-dir <path>', '监听story目录, 默认监听当前的目录的src');
 
     /**
      * 核心模块, 进入开发环境
      */
-    // process.env.SBCONFIG_PORT = 9998;
-    // require('@storybook/react/bin/index.js');
     (() => {
+
         program
             .command('start')
             .alias('s')
             .action((env) => {
+                if (path.resolve(__dirname, '../') === process.cwd()) {
+                    return;
+                }
                 if (program.port) {
                     process.env.SBCONFIG_PORT = program.port;
                 }
-                if (program.configDir) {
-                    process.env.SBCONFIG_CONFIG_DIR = program.configDir;
+                const cwd = process.cwd();
+                if (program.watchDir) {
+                    if (path.isAbsolute(program.watchDir)) {
+                        process.env.STORYBOOK_WATCH_DIR = program.watchDir;
+                    } else {
+                        process.env.STORYBOOK_WATCH_DIR = path.resolve(cwd, program.watchDir);
+                    }
+                } else {
+                    process.env.STORYBOOK_WATCH_DIR = path.resolve(cwd, 'src');
                 }
-                // console.log(program.configDir);
-                // console.log(path.resolve(__dirname, '../.storybook/config.js'));
-                // console.log(process.cwd());
-                // process.env.SBCONFIG_CONFIG_DIR = path.resolve(__dirname, '../.storybook/config.js');
-                // console.log('SBCONFIG_CONFIG_DIR: ' + cwd);
+                process.env.STORYBOOK_WATCH_DIR = path.resolve(cwd, 'src');
+                process.chdir(path.resolve(__dirname, '../'));
                 require('@storybook/react/bin/index.js');
             });
     })();
