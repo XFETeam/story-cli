@@ -1,11 +1,10 @@
 {
   "name": "@xfe-team/story-cli",
   "version": "0.0.1",
-  "description": "stroybook cli",
+  "description": "团队定制化 storybook, 并能够使用内部 xpx 长期缓存使用",
   "author": "xfe-team",
   "license": "MIT",
   "scripts": {
-    "build-storybook": "build-storybook",
     "storybook": "story-cli s",
     "release": "release-it 0.0.1"
   },
@@ -29,7 +28,6 @@
     "@xfe-team/babel-preset-xfe": "0.0.4",
     "babel-loader": "8.0.6",
     "babel-plugin-import": "1.12.2",
-    "babel-preset-umi": "^1.8.1",
     "emotion-theming": "^10.0.19",
     "less": "3.10.3",
     "less-loader": "5.0.0",

@@ -13,8 +13,8 @@ const {version} = require('../package.json');
      * 禁止自动安装
      */
     program
-        .option('-p, --port', 'story book')
-        .option('-w, --watch-dir <path>', '监听story目录, 默认监听当前的目录的src');
+        .option('-p, --port', '设置storybook运行的端口号')
+        .option('-w, --watch-dir <path>', 'storybook监听的目录, 默认监听当前目录的src');
 
     /**
      * 核心模块, 进入开发环境
@@ -24,6 +24,7 @@ const {version} = require('../package.json');
         program
             .command('start')
             .alias('s')
+            .description('启动')
             .action((env) => {
                 if (path.resolve(__dirname, '../') === process.cwd()) {
                     return;

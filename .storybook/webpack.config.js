@@ -1,8 +1,6 @@
 const webpack = require('webpack');
 
-module.exports = async ({ config, mode }) => {
-    console.log('process.env.STORYBOOK_WATCH_DIR: ' + process.env.STORYBOOK_WATCH_DIR);
-    console.log('process.cwd: ' + process.cwd());
+module.exports = async ({config, mode}) => {
     Object.assign(config, {
         resolve: {
             alias: {
@@ -26,15 +24,10 @@ module.exports = async ({ config, mode }) => {
             "antd-mobile"
         ]
     ];
-    config.module.rules[0].use[0].options.presets = [require.resolve("babel-preset-umi")];
+    config.module.rules[0].use[0].options.presets = [require.resolve("@xfe-team/babel-preset-xfe")];
 
     config.module.rules.push({
-        test: (filename) => {
-            if (/\.less$/.test(filename)) {
-                console.log(filename);
-            }
-            return /\.less$/.test(filename);
-        },
+        test: /\.less$/,
         use: [
             {
                 loader: 'style-loader'

@@ -9,7 +9,7 @@ Storybook是一个辅助UI控件开发的工具。通过story创建独立的控�
 ## 安装
 
 ```bash
-    yarn global add story-cli
+    yarn global add @xfe-team/story-cli
 ```
 
 ## 规则
@@ -35,7 +35,7 @@ Storybook是一个辅助UI控件开发的工具。通过story创建独立的控�
 
 ```bash
     # 假设当前工作区处于根目录
-    story-cli start -w src
+    story-cli start
 ```
 
 需要注意的是, 默认情况下, 当前工具只会监测 ' /\.story\.js$/' 即 story.js 结尾的文件. 暂时不开放该配置, 目的是约束确保整个团队 storybook
@@ -49,13 +49,13 @@ D:\Project\story>story-cli
 Usage:  [options] [command]
 
 Options:
-  -V, --version            output the version number
-  -p, --port               story book
-  -c, --config-dir <path>  设置配置文件路径, 默认路径为 webpack.config.js, 对于复杂需求可以用于区分多个不同的环境
-  -h, --help               output usage information
+  -V, --version           output the version number
+  -p, --port              设置storybook运行的端口号
+  -w, --watch-dir <path>  storybook监听的目录, 默认监听当前目录的src
+  -h, --help              output usage information
 
 Commands:
-  start|s
+  start|s                 启动
 ```
 
 ## 变更日志
