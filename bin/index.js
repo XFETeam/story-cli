@@ -3,6 +3,12 @@ const program = require("commander");
 const path = require('path');
 const {version} = require('../package.json');
 
+/**'
+ * 存在执行两次的bug，暂时通过hasEnter变量规避
+ * @type {boolean}
+ */
+let hasEnter = false;
+
 (() => {
     /**
      * 定义当前命令版本
@@ -26,9 +32,10 @@ const {version} = require('../package.json');
             .alias('s')
             .description('启动')
             .action((env) => {
-                if (path.resolve(__dirname, '../') === process.cwd()) {
+                if (path.resolve(__dirname, '../') === process.cwd() && hasEnter) {
                     return;
                 }
+                hasEnter = true;
                 if (program.port) {
                     process.env.SBCONFIG_PORT = program.port;
                 }
@@ -42,7 +49,6 @@ const {version} = require('../package.json');
                 } else {
                     process.env.STORYBOOK_WATCH_DIR = path.resolve(cwd, 'src');
                 }
-                process.env.STORYBOOK_WATCH_DIR = path.resolve(cwd, 'src');
                 process.chdir(path.resolve(__dirname, '../'));
                 require('@storybook/react/bin/index.js');
             });
