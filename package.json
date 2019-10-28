@@ -1,12 +1,12 @@
 {
   "name": "@xfe-team/story-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "团队定制化 storybook, 并能够使用内部 xpx 长期缓存使用",
   "author": "xfe-team",
   "license": "MIT",
   "scripts": {
     "storybook": "story-cli s",
-    "release": "release-it 0.0.1"
+    "release": "release-it 0.0.2"
   },
   "git": "https://github.com/XFETeam/story-cli.git",
   "homepage": "https://github.com/XFETeam/story-cli.git",

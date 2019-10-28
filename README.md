@@ -62,6 +62,8 @@ Commands:
 #### 0.0.1 (2019-10-25)
 
 * feat: init commit
+#### 0.0.2 (2019-10-28)
 
+* 修复运行两次的bug
 ## 作者
 She Ailun, Huang Zhe
