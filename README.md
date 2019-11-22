@@ -59,11 +59,19 @@ Commands:
 ```
 
 ## 变更日志
-#### 0.0.1 (2019-10-25)
 
-* feat: init commit
+#### 0.0.4 (2019-11-22)
+
+* fix: 修复使用 story-cli 后无法使用 react-hook 的问题
+* fix: 修复命令中无法使用修改端口 port
+
 #### 0.0.2 (2019-10-28)
 
 * 修复运行两次的bug
+
+#### 0.0.1 (2019-10-25)
+
+* feat: init commit
+
 ## 作者
 She Ailun, Huang Zhe
