@@ -19,7 +19,7 @@ let hasEnter = false;
      * 禁止自动安装
      */
     program
-        .option('-p, --port', '设置storybook运行的端口号')
+        .option('-p, --port [number]', '设置storybook运行的端口号')
         .option('-w, --watch-dir <path>', 'storybook监听的目录, 默认监听当前目录的src');
 
     /**
