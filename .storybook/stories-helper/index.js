@@ -2,7 +2,6 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import StoryLayout from './story-layout';
 import {addReadme} from 'storybook-readme';
-import {jsxDecorator} from 'storybook-addon-jsx';
 
 /**
  * 创建 story
@@ -13,22 +12,11 @@ import {jsxDecorator} from 'storybook-addon-jsx';
 export default function createStory(name, keyValues, README) {
     const story = storiesOf(name, module)
         .addDecorator(addReadme)
-        .addDecorator(jsxDecorator)
         .addDecorator(story => <StoryLayout>{story()}</StoryLayout>);
     keyValues.forEach(({key, component}) => {
         story.add(key, () => component, {
             readme: {
                 sidebar: README,
-            },
-            jsx: {
-                onBeforeRender: domString => {
-                    try {
-                        return domString.match(/{$(.|\n)+?type(.|\n)+?}/igm)[0].match(/content: <>(.+)<\/>?,/)[1];
-                    } catch (e) {
-                        return domString
-                    }
-                },
-                indent_size: 2
             }
         });
     });

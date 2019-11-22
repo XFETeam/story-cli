@@ -5,7 +5,7 @@
   "author": "xfe-team",
   "license": "MIT",
   "scripts": {
-    "storybook": "story-cli s -w D:\\projects\\temp3\\jx3_xoyo_com_m_2019_08_26_postcard\\src",
+    "storybook": "story-cli s -p 6007 -w D:\\projects\\generator-templates\\templates\\src",
     "release": "release-it 0.0.3"
   },
   "git": "https://github.com/XFETeam/story-cli.git",
@@ -31,8 +31,8 @@
     "emotion-theming": "^10.0.19",
     "less": "3.10.3",
     "less-loader": "5.0.0",
-    "storybook-addon-jsx": "7.1.6",
-    "storybook-readme": "5.0.8"
+    "storybook-readme": "5.0.8",
+    "webpack": "4.41.2"
   },
   "devDependencies": {
     "antd-mobile": "2.1.8",
