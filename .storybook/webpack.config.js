@@ -1,10 +1,13 @@
 const webpack = require('webpack');
+const path = require('path');
 
-module.exports = async ({config, mode}) => {
+module.exports = async ({ config, mode }) => {
     Object.assign(config, {
         resolve: {
             alias: {
                 '@src': process.env.STORYBOOK_WATCH_DIR,
+                'react': path.resolve(process.cwd(), 'node_modules', 'react'),
+                'react-dom': path.resolve(process.cwd(), 'node_modules', 'react-dom')
             }
         },
     });
@@ -25,6 +28,12 @@ module.exports = async ({config, mode}) => {
         ]
     ];
     config.module.rules[0].use[0].options.presets = [require.resolve("@xfe-team/babel-preset-xfe")];
+
+    config.module.rules[1].use = [
+        {
+            loader: 'raw-loader'
+        }
+    ];
 
     config.module.rules.push({
         test: /\.less$/,
