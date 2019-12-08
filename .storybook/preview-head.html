@@ -1,0 +1,42 @@
+<!--<script>-->
+<!--    var metaViewport = document.querySelector('meta[name=viewport]');-->
+<!--    metaViewport.parentElement.removeChild(metaViewport);-->
+<!--</script>-->
+<!--<script>-->
+<!--    window.__META_FLEXIBLE__ = {-->
+<!--        remRatio: 10,-->
+<!--        // 使用方案 2, REM-->
+<!--        plans: [2],-->
+<!--        // Rem响应最大上限, 当宽度达到750px后不再放大-->
+<!--        remUpperResizeLimit: 750,-->
+<!--        // 强制一切都判定为 mobile-->
+<!--        isMobile: function () {-->
+<!--            return true;-->
+<!--        }-->
+<!--    };-->
+<!--</script>-->
+<!--<script src="//zhcdn01.xoyo.com/xassets/lib/meta-flexible/0.0.8/meta-flexible.min.js"></script>-->
+<script>
+    document.documentElement.style.fontSize = '37.5px';
+</script>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+        background: #FAFAFA;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        -webkit-appearance: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .4);
+    }
+</style>

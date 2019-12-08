@@ -1,21 +1,29 @@
+const DoneCallbackPlugin = require('../src/done-callback-plugin');
+
 const webpack = require('webpack');
 const path = require('path');
 
-module.exports = async ({ config, mode }) => {
+// noinspection JSUnresolvedVariable
+const { constants, alias } = global.XFE_CONFIG || {};
+
+const constantsCloned = { ...constants };
+
+Object.keys(constantsCloned).forEach(key => {
+    constantsCloned[key] = JSON.stringify(constantsCloned[key]);
+});
+
+module.exports = async ({ config }) => {
     Object.assign(config, {
         resolve: {
-            alias: {
-                '@src': process.env.STORYBOOK_WATCH_DIR,
-                'react': path.resolve(process.cwd(), 'node_modules', 'react'),
-                'react-dom': path.resolve(process.cwd(), 'node_modules', 'react-dom')
-            }
+            alias
         },
     });
     config.module.rules[0].include = undefined;
 
-    config.plugins[1] = new webpack.DefinePlugin({
-        DEPLOY_ENV: JSON.stringify('test')
-    });
+    config.plugins[1] = new webpack.DefinePlugin(constantsCloned);
+
+    config.plugins.push(new DoneCallbackPlugin());
+
     config.module.rules[0].use[0].loader = require.resolve('babel-loader');
     config.module.rules[0].use[0].options.plugins = [
         [
@@ -46,6 +54,15 @@ module.exports = async ({ config, mode }) => {
                 options: {
                     importLoaders: 1,
                     modules: true,
+                }
+            },
+            {
+                loader: 'postcss-loader',
+                options: {
+                    sourceMap: true,
+                    config: {
+                        path: path.resolve(__dirname, '../')
+                    }
                 }
             },
             {

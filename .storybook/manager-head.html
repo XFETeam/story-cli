@@ -1,0 +1,54 @@
+<script>
+    ['log', 'info', 'warn', 'error'].forEach(function (methodName) {
+        var oldMethod = window.console[methodName];
+        window.console[methodName] = function () {
+            var all = Array.from(arguments).join(' ');
+            if (
+                all.indexOf('":first-child" is potentially unsafe') >= 0 ||
+                all.indexOf('Received `false` for a non-boolean attribute `loading') >= 0 ||
+                all.indexOf('Failed prop type: The prop `active` is marked as required') >= 0 ||
+                all.indexOf('Please update the following components: Draggable') >= 0
+            ) return;
+            oldMethod.apply(window.console, arguments);
+        };
+    });
+</script>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+        background: #FAFAFA;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        -webkit-appearance: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .4);
+    }
+
+    #storybook-preview-background {
+        height: 100%;
+    }
+
+    #storybook-preview-iframe {
+        margin: 20px auto !important;
+    }
+
+    .sidebar-item.css-3qjlvf {
+        color: #333333 !important;;
+        padding: 6px 12px !important;
+        font-size: 15px !important;;
+    }
+
+    button[title="Zoom in"], button[title="Zoom out"], button[title="Reset zoom"], button[title="Reset zoom"] + .css-11fmq5u, button[title="Toggle background grid"] {
+        display: none;
+    }
+</style>

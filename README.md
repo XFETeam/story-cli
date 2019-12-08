@@ -58,7 +58,49 @@ Commands:
   start|s                 启动
 ```
 
+## 配置
+
+在 cwd 工作区中, 创建 `.xfe-story/config.js` 后, 开发者可以通过该文件对一些内部行为进行一些直接配置, 以下
+
+```javascript
+module.exports = {
+  /**
+   * 常量, 这将作为 webpack definePlugin 使用
+   */
+  constants: webpackConfig.globalConst,
+  /**
+   * webpack 别名, 推荐使用 react, react-dom, 否者将会有2个 react 实例导致 react hook 报错
+   */
+  alias: {
+    ...webpackConfig.resolve.alias,
+    'react': path.resolve(__dirname, '../node_modules', 'react'),
+    'react-dom': path.resolve(__dirname, '../node_modules', 'react-dom')
+  },
+  /**
+   * postcss 配置, 当前只支持: postcss-px-to-viewport 插件
+   */
+  postcss: {
+    'postcss-px-to-viewport': postcssConfig.plugins['postcss-px-to-viewport']
+  },
+  /**
+   * storybook 默认使用设配窗口, 如: 'desktop', 'iphonex'
+   */
+  viewport: {
+    defaults: 'iphonex'
+  }
+};
+```
+
 ## 变更日志
+
+#### 0.0.5 (2019-12-09)
+
+* feat: 在 webpack rebuild 成功将再次显示 server 服务启动的地址, 这将有效解决开发者忘记最初启动的服务端口问题
+* feat: 新增 .xfe-story/config.js 文件, 这个将通过文件直接进行内部 story 配置
+* feat: 美化所有滚动条
+* feat: 新增 postcss, 使其支持 rem 配置. 这样一来会与 mobile-react-v4.1 移动端环境更接近
+* fix: 修复浏览器控制台关于 storybook 的警告性错误提示
+* remove: 由于使用率低且反馈没什么作用, 移除 @storybook/addons 等 storybook 插件
 
 #### 0.0.4 (2019-11-22)
 

@@ -1,7 +1,9 @@
 #!/usr/bin/env node
+// noinspection NpmUsedModulesInstalled
 const program = require("commander");
 const path = require('path');
-const {version} = require('../package.json');
+const { version } = require('../package.json');
+const readClientConfig = require('../src/read-client-config');
 
 /**'
  * 存在执行两次的bug，暂时通过hasEnter变量规避
@@ -26,20 +28,19 @@ let hasEnter = false;
      * 核心模块, 进入开发环境
      */
     (() => {
-
         program
             .command('start')
             .alias('s')
             .description('启动')
-            .action((env) => {
+            .action(async (env) => {
                 if (path.resolve(__dirname, '../') === process.cwd() && hasEnter) {
                     return;
                 }
                 hasEnter = true;
-                if (program.port) {
-                    process.env.SBCONFIG_PORT = program.port;
-                }
+
                 const cwd = process.cwd();
+                const STORYBOOK_WATCH_DIR = path.resolve(cwd, 'src');
+
                 if (program.watchDir) {
                     if (path.isAbsolute(program.watchDir)) {
                         process.env.STORYBOOK_WATCH_DIR = program.watchDir;
@@ -47,8 +48,17 @@ let hasEnter = false;
                         process.env.STORYBOOK_WATCH_DIR = path.resolve(cwd, program.watchDir);
                     }
                 } else {
-                    process.env.STORYBOOK_WATCH_DIR = path.resolve(cwd, 'src');
+                    process.env.STORYBOOK_WATCH_DIR = STORYBOOK_WATCH_DIR;
                 }
+
+                // noinspection JSUndefinedPropertyAssignment
+                global.XFE_CONFIG = await readClientConfig(path.resolve(process.env.STORYBOOK_WATCH_DIR, '../'));
+                // noinspection JSUndefinedPropertyAssignment,JSUnresolvedVariable
+                const { story = {} } = global.XFE_CONFIG || {};
+                story.port && (process.env.SBCONFIG_PORT = story.port);
+                // noinspection JSUndefinedPropertyAssignment,JSUnresolvedVariable
+                story.watchDir && (process.env.STORYBOOK_WATCH_DIR = story.watchDir);
+
                 process.chdir(path.resolve(__dirname, '../'));
                 require('@storybook/react/bin/index.js');
             });

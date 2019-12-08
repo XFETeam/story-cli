@@ -1,7 +1,11 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import StoryLayout from './story-layout';
-import {addReadme} from 'storybook-readme';
+import { addReadme } from 'storybook-readme';
+
+const defaults = (mod) => {
+    return (mod && mod.default) ? mod.default : mod;
+};
 
 /**
  * 创建 story
@@ -10,13 +14,13 @@ import {addReadme} from 'storybook-readme';
  * @param README
  */
 export default function createStory(name, keyValues, README) {
-    const story = storiesOf(name, module)
+    const story = storiesOf(`${name}`, module)
         .addDecorator(addReadme)
         .addDecorator(story => <StoryLayout>{story()}</StoryLayout>);
-    keyValues.forEach(({key, component}) => {
+    keyValues.forEach(({ key, component }) => {
         story.add(key, () => component, {
             readme: {
-                sidebar: README,
+                sidebar: defaults(README),
             }
         });
     });
